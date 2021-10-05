@@ -1,0 +1,12 @@
+### argv1 : 要打包的经过apktool处理过的目录
+
+
+project_dir=$1
+java -jar /Users/zdn/work/reverseTools/apktool/apktool_2.5.0.jar b $project_dir
+# java -jar /Users/zdn/work/reverseTools/apktool/apktool_2.5.0.jar b com.cleandroid.server.ctsthor
+APK=`ls $project_dir/dist/*apk`
+
+jarsigner -keystore /Users/zdn/work/mytools/bin/android.keystore -signedjar aaa.apk $APK androidtest <<EOF
+hello123
+EOF
+#adb install -r -g aaa.apk
